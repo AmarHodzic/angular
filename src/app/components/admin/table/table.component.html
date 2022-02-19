@@ -1,0 +1,32 @@
+<div class="container" style="overflow-x:scroll;">
+  <app-add-modal *ngIf="trenutnaRuta=='/admin/categories'" (saveEvent)="handleAdd($event)" (click)="addCategoryToTable()" [colList]="listaColCat" [atr]="['title','desc','images']"></app-add-modal>
+  <app-add-modal *ngIf="trenutnaRuta=='/admin/products'" (saveEvent)="handleAdd($event)" [colList]="listaColPrd" [atr]="['title', 'desc', 'images', 'price', 'quantity', 'catId']"></app-add-modal>
+  
+  <table class="table mt-3 " style="overflow-x:scroll;">
+    <thead class="thead-dark" style="overflow-x:scroll;">
+      <tr>
+        <th *ngFor="let column of headers" scope="col" class="text-center">
+          {{ column }}
+        </th>
+        <th *ngIf="trenutnaRuta!='/admin/orders'" class="text-center">EDIT</th>
+        <th *ngIf="trenutnaRuta!='/admin/orders'" class="text-center">DELETE</th>
+        <th *ngIf="trenutnaRuta=='/admin/orders'" class="text-center">SHIP</th>
+        <th *ngIf="trenutnaRuta=='/admin/orders'" class="text-center">CANCEL</th>
+      </tr>
+    </thead>
+
+    <tbody style="overflow-x:scroll;">
+      <tr *ngFor="let row of rows">
+        <td *ngFor="let column of headers" class="text-center">
+          {{ row[column] }}
+        </td>
+        <td *ngIf="trenutnaRuta!='/admin/orders'" class="text-center">
+          <app-edit-modal></app-edit-modal>
+        </td>
+        <td *ngIf="trenutnaRuta!='/admin/orders'" style="cursor: pointer;" class="text-danger text-center" (click)="onDelete(row)">X</td>
+        <td *ngIf="trenutnaRuta=='/admin/orders'" class="text-center">ship</td>
+        <td *ngIf="trenutnaRuta=='/admin/orders'" class="text-center">cancel</td>      
+      </tr>
+    </tbody>
+  </table>
+</div>

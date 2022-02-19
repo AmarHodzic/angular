@@ -1,0 +1,51 @@
+<div class="bg-light py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <h1 class="display-5 fw-bolder text-dark mb-2">Best medical equipment shop</h1>
+                    <p class="lead fw-normal text-dark-50 mb-4">Affordable for every hospital, clinic and medical practice to have the very best equipment, supplies and service.</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3 bg-primary" routerLink="/">Start shoping now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="assets/images/slicicaa.png" alt="..." /></div>
+        </div>
+    </div>
+</div>
+<!-- Features section-->
+<section class="py-5" id="features">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bolder">Browse Top Categories</h2>
+            </div>
+            <div *ngFor="let category of categories" class="col-lg-4 mb-5 mb-lg-0">
+                <div style="cursor: pointer;" class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                    <img [routerLink]="'/categories/'+category.id+'/products'" [src]="category.images" class="img-thumbnail" alt="asd">
+                </div>
+                <h3 class="h4 fw-bolder text-center">{{ category.title }}</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog preview section-->
+<section class="py-5 bg-light">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bolder">Best selling items</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row gx-5">
+            <div *ngFor="let product of products" class="col-lg-4 mb-5 d-flex ">
+                <app-product [product]="product"></app-product>
+            </div>
+        </div>
+
+    </div>
+</section>

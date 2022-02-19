@@ -1,0 +1,23 @@
+<p class="m-0" style="cursor: pointer;" (click)="open(content)">Edit</p>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add item to table</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form *ngFor="let colItem of colList"> 
+      <div class="form-group">
+        <label for="dateOfBirth">{{ colItem }}</label>
+        <div class="input-group mb-3">
+          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp">
+        </div>
+      </div>
+    </form> 
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template> 

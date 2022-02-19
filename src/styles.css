@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+.bg-primary{
+    background-color: rgb(58,149,201) !important;
+}
+
+.text-primary{
+    background-color: rgb(58,149,201) !important;
+}
+
+.content-wrapper{
+    display:flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.content-wrapper > div:nth-child(2) {
+    flex:1;
+}
+
+.card{
+    /* width: 300px !important; */
+}
+
+.thead-dark{
+    background-color:#212529;
+    color: #fff;
+}

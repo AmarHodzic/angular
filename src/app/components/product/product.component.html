@@ -1,0 +1,25 @@
+<div class="card h-100 shadow border-0 col-xl-10 col-12 m-auto" >
+    <img class="card-img-top" [src]="product.images[0]" alt="..." />
+    <div class="card-body p-4">
+        <div class="badge bg-primary bg-gradient rounded-pill mb-2">Best</div>
+        <a class="text-decoration-none link-dark " [routerLink]="['/products', product.id]"><h5 class="card-title mb-3">{{product.title}}</h5></a>
+        <p class="card-text mb-0">{{product.price}}     $</p>
+    </div>
+    <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+        <div class="d-flex align-items-end justify-content-between">
+            <div class="d-flex align-items-center">
+                <!-- <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." /> -->
+                <!-- <div class="small"> -->
+                <div>
+                    <button type="button"  class="btn btn-secondary" style="white-space:nowrap;" (click)="handleAdd() ">Add to cart</button>
+                </div>
+                <div class="form-group px-2">
+                    <input class="w-50" type="number" name="num" id="num" min="1" [(ngModel)]="prodValue" value="1">
+                </div>    
+                    <!-- <div class="fw-bold">Kelly</div> -->
+                    <!-- <div class="text-muted">March 12, 2021 &middot; 6 min read</div> -->
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</div>

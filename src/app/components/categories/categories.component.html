@@ -1,0 +1,24 @@
+<div class="container border my-2">
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nekiId" aria-expanded="false" aria-controls="flush-collapseOne">
+          All products
+        </button>
+      </h2>
+      <div id="nekiId" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body"> Products from all categories.. <br> <a routerLink="/allproducts">Show products</a></div>
+      </div>
+    </div>
+    <div *ngFor="let category of categories;let i = index;" class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#'+handleAcc(i)" aria-expanded="false" aria-controls="flush-collapseOne">
+          {{ category.title }}
+        </button>
+      </h2>
+      <div [id]="handleAcc(i)" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body"> {{category.desc}} <br> <a [routerLink]="'/categories/'+category.id+'/products'">Show products</a></div>
+      </div>
+    </div>
+  </div>
+</div>

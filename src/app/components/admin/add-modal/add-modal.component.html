@@ -1,0 +1,26 @@
+<button class="btn btn-lg btn-outline-primary mt-3" (click)="open(content)">Add item</button>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add item to table</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+      <div *ngFor="let colItem of colList; let i = index" class="form-group">
+        <label for="dateOfBirth">{{ colItem }}</label>
+        <div class="input-group mb-3">
+          <input type="text" id="dateOfBirth" class="form-control" [(ngModel)]="inputField[atr[i]]" placeholder="" name="dp">
+        </div>
+      </div>
+      <div class=" text-center modal-footer">
+        <button data-dismiss="modal" class="btn btn-success" (click)="modal.close('Save click')">Submit</button>
+      </div>
+    </form>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div> -->
+</ng-template>

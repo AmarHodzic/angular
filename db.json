@@ -1,0 +1,242 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin",
+      "name": "Amar Hodzic",
+      "type": "admin",
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 2,
+      "username": "admin1",
+      "password": "admin1",
+      "name": "Amar Hodzic1",
+      "type": "customer",
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 3,
+      "username": "admin2",
+      "password": "admin2",
+      "name": "Amar Hodzic2",
+      "type": "customer",
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "title": "some comment",
+      "images": "assets/images/download.jpg",
+      "desc": "lorem",
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 2,
+      "title": "kategorija1+1",
+      "images": "assets/images/istockphoto-1165046681-612x612.jpg",
+      "desc": "lorem",
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 3,
+      "title": "kategorija3",
+      "images": "assets/images/istockphoto-1220059380-612x612.jpg",
+      "desc": "lorem",
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 4,
+      "title": "kategorija4",
+      "images": "assets/images/medical-appointment-doctor-healthcare-40568.jpeg",
+      "desc": "lorem",
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 5,
+      "title": "some comment5",
+      "images": "assets/images/slika9.jpg",
+      "desc": "loremHEHEHEHE",
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    }
+  ],
+  "products":[ 
+    {
+      "id": 1,
+      "title": "some comment",
+      "desc": "lorem",
+      "images": ["assets/images/medical-appointment-doctor-healthcare-40568.jpeg", "assets/images/istockphoto-1165046681-612x612.jpg"],
+      "price": 12,
+      "quantity": 10,
+      "catId": 1,
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 2,
+      "title": "some comment",
+      "desc": "lorem",
+      "images": ["assets/images/medical-appointment-doctor-healthcare-40568.jpeg", "assets/images/istockphoto-1165046681-612x612.jpg", "assets/images/istockphoto-1220059380-612x612.jpg"],
+      "price": 13,
+      "quantity": 3,
+      "catId": 3,
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 3,
+      "title": "some comment",
+      "desc": "lorem",
+      "images": ["assets/images/medical-appointment-doctor-healthcare-40568.jpeg", "assets/images/medical-appointment-doctor-healthcare-40568.jpeg"],
+      "price": 13,
+      "quantity": 5,
+      "catId": 1,
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 4,
+      "title": "some comment",
+      "desc": "lorem",
+      "images": ["assets/images/medical-appointment-doctor-healthcare-40568.jpeg", "assets/images/medical-appointment-doctor-healthcare-40568.jpeg"],
+      "price": 13,
+      "quantity": 8,
+      "catId": 2,
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 5,
+      "title": "some comment",
+      "desc": "lorem",
+      "images": ["assets/images/medical-appointment-doctor-healthcare-40568.jpeg", "assets/images/medical-appointment-doctor-healthcare-40568.jpeg"],
+      "price": 12,
+      "quantity": 4,
+      "catId": 1,
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 6,
+      "title": "some comment",
+      "desc": "lorem",
+      "images": ["assets/images/medical-appointment-doctor-healthcare-40568.jpeg", "assets/images/medical-appointment-doctor-healthcare-40568.jpeg"],
+      "price": 13,
+      "quantity": 2,
+      "catId": 3,
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 7,
+      "title": "some comment",
+      "desc": "lorem",
+      "images": ["assets/images/medical-appointment-doctor-healthcare-40568.jpeg", "assets/images/medical-appointment-doctor-healthcare-40568.jpeg"],
+      "price": 13,
+      "quantity": 9,
+      "catId": 1,
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 8,
+      "title": "some comment",
+      "desc": "lorem",
+      "images": ["assets/images/medical-appointment-doctor-healthcare-40568.jpeg", "assets/images/medical-appointment-doctor-healthcare-40568.jpeg"],
+      "price": 13,
+      "quantity": 3,
+      "catId": 2,
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 9,
+      "title": "hohoho",
+      "desc": "lorem",
+      "images": ["assets/images/medical-appointment-doctor-healthcare-40568.jpeg", "assets/images/medical-appointment-doctor-healthcare-40568.jpeg"],
+      "price": 12,
+      "quantity": 5,
+      "catId": 1,
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 10,
+      "title": "Titleeee",
+      "desc": "lorem",
+      "images": ["assets/images/medical-appointment-doctor-healthcare-40568.jpeg", "assets/images/medical-appointment-doctor-healthcare-40568.jpeg"],
+      "price": 13,
+      "quantity": 2,
+      "catId": 3,
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 11,
+      "title": "hehehe1",
+      "desc": "lorem",
+      "images": ["assets/images/medical-appointment-doctor-healthcare-40568.jpeg", "assets/images/medical-appointment-doctor-healthcare-40568.jpeg"],
+      "price": 13,
+      "quantity": 4,
+      "catId": 1,
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 12,
+      "title": "some comment",
+      "desc": "lorem",
+      "images": ["assets/images/medical-appointment-doctor-healthcare-40568.jpeg", "assets/images/medical-appointment-doctor-healthcare-40568.jpeg"],
+      "price": 13,
+      "quantity": 2,
+      "catId": 2,
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId":1,
+      "products": [
+        {
+          "id": 1,
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "quantity": 2
+        }
+      ],
+      "state": "shipping",
+      "adress": "neka1",
+      "price": 132,
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    },
+    {
+      "id": 2,
+      "products": [
+        {
+          "id": 1,
+          "quantity": 1
+        }
+      ],
+      "state": "pending",
+      "adress": "neka1",
+      "price": 132,
+      "createdOn": "21.2.2022.",
+      "updatedOn": "22.3.2022."
+    }
+  ]
+}

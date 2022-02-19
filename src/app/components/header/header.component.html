@@ -1,0 +1,33 @@
+<nav *ngIf="userType=='admin'" class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container px-5">
+        <a class="navbar-brand" routerLink="/admin/adminPage">Medical Shop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item" *ngIf="!auth"><a class="nav-link" routerLink="/login">Login</a></li>
+                <li class="nav-item" *ngIf="!auth"><a class="nav-link" routerLink="/register">Register</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/admin/products">Products</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/admin/categories">Categories</a></li>
+                <li class="nav-item" *ngIf="auth"><a class="nav-link" routerLink="/admin/orders">Orders</a></li>
+                <!-- <li class="nav-item" *ngIf="auth"><a class="nav-link" routerLink="/cart"><fa-icon [icon]="faShoppingCart"></fa-icon></a></li> -->
+                <li class="nav-item" *ngIf="auth"><a class="nav-link" style="cursor:pointer;" (click)="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<nav *ngIf="userType!='admin'" class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container px-5">
+        <a class="navbar-brand" routerLink="/">Medical Shop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item" *ngIf="!auth"><a class="nav-link" routerLink="/login">Login</a></li>
+                <li class="nav-item" *ngIf="!auth"><a class="nav-link" routerLink="/register">Register</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/categories">Categories</a></li>
+                <li class="nav-item" *ngIf="auth"><a class="nav-link" routerLink="/orders">Orders</a></li>
+                <li class="nav-item" *ngIf="auth"><a class="nav-link" routerLink="/cart"><fa-icon [icon]="faShoppingCart"></fa-icon></a></li>
+                <li class="nav-item" *ngIf="auth"><a class="nav-link" style="cursor:pointer;" (click)="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
