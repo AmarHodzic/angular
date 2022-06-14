@@ -27,4 +27,35 @@ export class ProductsService {
   getProductsByCategoryId(id){
     return this.http.get<Product[]>(`${config.url}/Products`)
   }
+
+  getProductsByPage(brojSkip){
+    return this.http.get<Product[]>(`${config.url}/Products/skip/${brojSkip}`)
+  }
+
+  getProductCount(){
+    return this.http.get<Number>(`${config.url}/Products/count`);
+  }
+ 
+  deleteProductById(id){
+    return this.http.delete(`${config.url}/Products/${id}`)
+  }
+
+  addProduct(product: Product){
+    let tempProduct = {
+      title:product.title,
+      desc:product.desc,
+      images:product.images,
+      price:product.price,
+      quantity:product.quantity,
+    }
+   return this.http.post<any>(`${config.url}/Products/${product.catId}`,tempProduct,{headers:{"Content-Type":"application/json"}})
+  }
+
+  changeProduct(product){
+    return this.http.put<any>(`${config.url}/Products/${product.id}`, product)
+  }
+
+  reduceQuantity(quantity, product){
+    return this.http.put<any>(`${config.url}/Products/${product.id}/${quantity}`, product)
+  }
 }

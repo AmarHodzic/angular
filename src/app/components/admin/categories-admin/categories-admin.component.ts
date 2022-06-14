@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { CategoriesService } from 'src/app/services/categories.service';
 
 @Component({
   selector: 'app-categories-admin',
@@ -7,26 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesAdminComponent implements OnInit {
 
-  Headers = ['id','title','desc','updateddate','createddate']
-  Rows = [
-    {'id':1,'title':'nekititle1','desc':'nekides1','updateddate':'dateNeki','createddate':'ALOOOOO'},
-    {'id':2,'title':'nekititle2','desc':'nekides1','updateddate':'dateNeki','createddate':'ALOOOOO'},
-    {'id':3,'title':'nekititle3','desc':'nekides1','updateddate':'dateNeki','createddate':'ALOOOOO'},
-    {'id':4,'title':'nekititle4','desc':'nekides1','updateddate':'dateNeki','createddate':'ALOOOOO'},
-    {'id':5,'title':'nekititle5','desc':'nekides1','updateddate':'dateNeki','createddate':'ALOOOOO'},
-  ]
+  Headers = ['title','desc','image']
+  Rows = []
+  x: boolean;
   
-  constructor() { }
+  constructor(private categoriesService: CategoriesService) { }
 
   ngOnInit(): void {
+    this.categoriesService.getCategories().subscribe( res => {
+      for(let i = 0; i < res.length; i++){
+        this.Rows.push(res[i])
+      }
+    })
   }
 
   handleDeleteOfRow(event){
-    this.Rows = this.Rows.filter(ourRow=>ourRow.id!=event.id)
+    // this.x = true;
+    this.categoriesService.deleteCategoryById(event).subscribe( res => {
+      this.Rows = this.Rows.filter(ourRow=>ourRow.id!=event)  
+    },
+    err => {
+      if(err.status == 500){
+        this.x = true
+        setTimeout(()=>{
+          this.x = false
+        }, 4000)
+      }
+    })
+    
   }
   
-  // handleAdd(event){
-  //   console.log('hello???')
-  //   console.log(event)
-  // }
 }

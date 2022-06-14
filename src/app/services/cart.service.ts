@@ -34,6 +34,9 @@ export class CartService {
       for(let i = 0; i<listOfItems.length;i++){
         if(cartItem.id == listOfItems[i].id){
           listOfItems[i].quantity = parseInt(listOfItems[i].quantity) + parseInt(val)
+          if(listOfItems[i].quantity>cartItem.quantity) {
+            listOfItems[i].quantity = cartItem.quantity;
+          }
           dodat = true;
           break;
         }
@@ -49,14 +52,12 @@ export class CartService {
         cartItemsString+="&"+cartItem.id+"#"+val
 
       localStorage.setItem('cartItem', cartItemsString)
-      console.log(cartItemsString);
     }
     else{
       cartItemsStringIfEmpty+=cartItem.id+"#"+val
       localStorage.setItem('cartItem', cartItemsStringIfEmpty)
     }
   
-    console.log(cartItems);
   }
 
   getCartItems(){
@@ -99,7 +100,7 @@ export class CartService {
     return listOfItems;
   }
 
-  editCartItem(id){
+  editCartItem(id,quantity){
     let cartItems = this.getCartItems()
     let arrOfItems = cartItems.split("&")
     let listOfItems = []
@@ -113,19 +114,19 @@ export class CartService {
       listItem.quantity = x[1]
       listOfItems.push(listItem)      
     }
+
     let cartItemsString = ""
-    let counter = 0;
-    for(let i = 0; i<listOfItems.length; i++){
-      if(listOfItems[i].id == id){
-        if(counter>0){
-          listOfItems[i].quantity++
-          cartItemsString+="&"
+      let counter = 0;
+      for(let i = 0; i<listOfItems.length;i++){
+        if(counter>0)
+          cartItemsString+="&";
+        
+        if(listOfItems[i].id == id){
+          listOfItems[i].quantity = quantity
         }
         cartItemsString+=listOfItems[i].id+"#"+listOfItems[i].quantity
         counter++
       }
-    }
-    console.log(listOfItems)
     localStorage.setItem('cartItem', cartItemsString)  
   }
 

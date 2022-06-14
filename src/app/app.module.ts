@@ -9,7 +9,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductComponent } from './components/product/product.component';
 import { CategoriesComponent } from './components/categories/categories.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { OrdersComponent } from './components/orders/orders.component';
@@ -27,6 +27,7 @@ import { AddModalComponent } from './components/admin/add-modal/add-modal.compon
 import { EditModalComponent } from './components/admin/edit-modal/edit-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     FormsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass:JwtInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

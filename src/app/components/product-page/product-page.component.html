@@ -1,21 +1,20 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
-        <div  class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div  class="row gx-4 gx-lg-5 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <div *ngFor="let product of products; let i = index" class="col mb-5">
                 <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                    
+                    <img class="card-img-top" style="height: 200px; object-fit:cover;" [routerLink]="['/products', product.id]" [src]="product.images[0]" alt="..." />
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
                             <h5 class="fw-bolder">{{ product.title }}</h5>
                             <!-- Product reviews-->
-                            
                             <!-- Product price-->
                             ${{product.price}}
                             <div class="d-flex justify-content-center small text-warning mb-2">
-                                <input class="w-50" type="number" name="num" id="num" min="1" value="1" [(ngModel)]="prodVal[i]">
+                                <input class="w-50" type="number" name="num" id="num" min="1" value="1" (keydown)="checkMax($event,product.id)" (keyup)="checkMax($event,product.id)" (change)="checkMax($event,product.id)" [(ngModel)]="prodVal[i]">
                             </div>
                         </div>
                     </div>
@@ -26,7 +25,7 @@
                 </div>
             </div>
             <div class="w-100"></div>
-            <app-pagination></app-pagination>
+            <app-pagination (pageEvent)="fetchNewPage($event)"></app-pagination>
         </div>
     </div>
 </section>

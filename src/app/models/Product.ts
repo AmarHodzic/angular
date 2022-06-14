@@ -5,7 +5,5 @@ export interface Product{
     images: string[];
     price: number;
     quantity: number;
-    catId: number;
-    createdOn: Date;
-    updatedOn: Date;
+    catId:number;
 }

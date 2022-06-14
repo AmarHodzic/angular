@@ -5,21 +5,20 @@
                 <h4>Shopping cart</h4>
             </div>
             <div *ngIf="listaProizvoda.length == 0"> <h2 class="text-grey text-center"><em>Cart is empty...</em></h2></div>
-            <div *ngFor="let proizvod of listaProizvoda">
-                <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
-                    <div class="mr-1"><img class="rounded" src="../../../assets/images/slicica.jpeg" width="70"></div>
-                    <div class="d-flex flex-column align-items-center product-details">
-                        <span class="font-weight-bold">{{ proizvod.title }}</span>
+            <div *ngFor="let proizvod of listaProizvoda"> 
+                <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 rounded">
+                    <div class="d-flex flex-column align-items-center product-details" style="width: 50%;">
+                        <span class="font-weight-bold pt-2 pb-2" style="font-weight: bold;">{{ proizvod.title }}</span>
                     </div>
-                    <div class="d-flex flex-row align-items-center qty">
-                        <div class="form-group px-2">
-                            <input [(ngModel)]="proizvod.quantity" class="w-50" type="number" name="num" id="num" min="1" value="1" [max]="proizvod.max" (change)="onChange($event,proizvod)">
-                        </div>
-                    </div>
-                    <div>
+                    <div style="width: 20%;" class="pt-2 d-flex justify-content-end">
                         <h5 class="text-grey">${{proizvod.price}}</h5>
                     </div>
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex flex-row align-items-center qty" style="width:15%">
+                        <div class="form-group" style="width: 100%;">
+                            <input [(ngModel)]="proizvod.quantity" class="w-100" type="number" name="num" id="num" min="1" value="1" [max]="proizvod.max" (keydown)="checkMax($event, proizvod.id)" (keyup)="checkMax($event, proizvod.id)" (change)="onChange($event,proizvod)">
+                        </div>
+                    </div>
+                    <div style="width: 10%;" class="d-flex justify-content-end align-items-center">
                         <button type="button" class="close text-danger border-0 bg-white" aria-label="Close">
                             <span class="display-5" aria-hidden="true" (click)="deleteProduct(proizvod)">&times;</span>
                         </button>
@@ -29,6 +28,7 @@
             <div class="bg-black mb-3" style="height: 2px;"></div>
             <div class="d-flex justify-content-end"><label for="total"><h5>Total amount: ${{ countSum() }}</h5></label></div>
             <div class="d-flex flex-row align-items-center mt-3 p-1 bg-black rounded"><input [(ngModel)]="addressInput" type="text" class="form-control border-0 gift-card" placeholder="Add your address"></div>
+            <div *ngIf="x" class="alert alert-danger mt-2">{{validation}}</div>
             <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button (click)="printProducts()" class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button">Proceed to Pay</button></div>
         </div>
     </div>

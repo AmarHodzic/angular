@@ -23,3 +23,26 @@
     background-color:#212529;
     color: #fff;
 }
+
+@media (max-width: 768px) {
+    .carousel-control-next.bg-dark.position-absolute.end-50.desnoSlide{
+        right: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    
+    .prevSlika{
+        height: 300px !important;
+    }
+
+    .levoSlide{
+        width: 35px !important;
+        height: 300px !important;
+    }
+
+    .carousel-control-next.bg-dark.position-absolute.end-50.desnoSlide{
+        width: 35px !important;
+        height: 300px !important;
+    }
+}

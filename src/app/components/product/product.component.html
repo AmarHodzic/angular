@@ -1,9 +1,9 @@
 <div class="card h-100 shadow border-0 col-xl-10 col-12 m-auto" >
-    <img class="card-img-top" [src]="product.images[0]" alt="..." />
-    <div class="card-body p-4">
+    <img class="card-img-top" [routerLink]="['/products', product.id]" [src]="product.images[0]" alt="..." />
+    <div class="card-body p-4 pb-0">
         <div class="badge bg-primary bg-gradient rounded-pill mb-2">Best</div>
-        <a class="text-decoration-none link-dark " [routerLink]="['/products', product.id]"><h5 class="card-title mb-3">{{product.title}}</h5></a>
-        <p class="card-text mb-0">{{product.price}}     $</p>
+        <a class="text-decoration-none link-dark " [routerLink]="['/products', product.id]"><h5 class="card-title mb-2">{{product.title}}</h5></a>
+        <p class="card-text mb-3">{{product.price}} $</p>
     </div>
     <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
         <div class="d-flex align-items-end justify-content-between">
@@ -14,7 +14,7 @@
                     <button type="button"  class="btn btn-secondary" style="white-space:nowrap;" (click)="handleAdd() ">Add to cart</button>
                 </div>
                 <div class="form-group px-2">
-                    <input class="w-50" type="number" name="num" id="num" min="1" [(ngModel)]="prodValue" value="1">
+                    <input class="fix-input col-8" type="number" name="num" id="num" min="1"  (keydown)="checkMax($event)" (keyup)="checkMax($event)" (change)="checkMax($event)" [(ngModel)]="prodValue" value="1">
                 </div>    
                     <!-- <div class="fw-bold">Kelly</div> -->
                     <!-- <div class="text-muted">March 12, 2021 &middot; 6 min read</div> -->

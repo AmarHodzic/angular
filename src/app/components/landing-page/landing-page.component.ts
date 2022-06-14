@@ -13,7 +13,8 @@ export class LandingPageComponent implements OnInit {
   numbers = [0,1,2];
   products:Product[];
   categories:Category[]; 
-
+  backup = 'https://media.istockphoto.com/vectors/hand-drawn-medical-equipment-icon-set-isolated-colored-medical-vector-id1178317661'
+  
   constructor(private productService:ProductsService, private categoriesService:CategoriesService) { }
 
   ngOnInit(): void {
@@ -23,7 +24,14 @@ export class LandingPageComponent implements OnInit {
 
     this.categoriesService.getCategories().subscribe(categories =>{
       this.categories = this.filterCategories(categories)
+      for(let i = 0; i<this.categories.length; i++){
+        this.checkImage(this.categories[i].image, ()=>{console.log('')}, ()=>{
+          this.categories[i].image = this.backup
+        })
+      }
     })
+
+    
   } 
 
   filterProducts(products:Product[]){
@@ -34,4 +42,10 @@ export class LandingPageComponent implements OnInit {
     return categories.slice(0,3)  
   }
 
+  checkImage(src, good, bad) {
+    var img = new Image();
+    img.onload = good
+    img.onerror = bad
+    img.src = src
+  }
 }

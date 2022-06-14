@@ -15,7 +15,7 @@ export class AuthService {
 
   private userData = new BehaviorSubject<string>(null);
   userType = this.userData.asObservable()
-
+  us: User;
 
   constructor(private http:HttpClient, private router:Router) { }
 
@@ -25,36 +25,12 @@ export class AuthService {
   }
 
   login(user:UserCredentials){
-    // to do:
-    // this.http.post<string>(`${config.url}/register`,user).subscribe(token=>{
-    //   this.setAuthToken(token)
-    // })
-
-    this.http.get<User[]>(`${config.url}/Users`).subscribe(users=>{
-      for(let userFromDB of users){
-        if(userFromDB.username==user.username && userFromDB.password==user.password){
-          this.setAuthToken('ulogovan')
-          this.setUserType(userFromDB)
-          //
-          if(userFromDB.type == 'admin')
-            this.router.navigate(['/admin/adminPage'])
-          else
-            this.router.navigate(['/'])
-        }
-      }
-      this.setAuth(); 
-    })
+    return this.http.post(`${config.url}/Users/authenticate`, JSON.stringify(user),{headers:{'Content-Type':'application/json'},responseType:'text'}) 
   }
   
   register(user:User){ 
-    //   SHOULD BE HANDLED ON BACKEND 
-      user.type = "customer"
-      user.createdOn = new Date()
-      user.updatedOn = new Date()
-    //
-
+    user.type = "customer"
     return this.http.post<User>(`${config.url}/Users`,user);
-    // to do:
   }
 
   logout(){
@@ -87,8 +63,20 @@ export class AuthService {
     localStorage.setItem('user-type',user.type)
   }
 
+  setUserId(user:User){
+    localStorage.setItem('user-id',user.id.toString())
+  }
+
   getUserType(){
     return localStorage.getItem('user-type')
+  }
+
+  getUserId(){
+    return localStorage.getItem('user-id')
+  }
+
+  getUserByUsername(username){
+    return this.http.get<any>(`${config.url}/Users/username/${username}`)
   }
 
   clearUserType(){

@@ -1,1 +1,1 @@
-<app-table [headers]="Headers" [rows]="Rows"></app-table>
+<app-table [headers]="Headers" [rows]="Rows" [shipOrDeliver]="ShipOrDeliver" (cancelEvent)="handleCancelOrder($event)" (shipEvent)="handleShipOrder($event)" (deliverEvent)="handleDeliverOrder($event)"></app-table>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Product } from 'src/app/models/Product';
+import { AuthService } from 'src/app/services/auth.service';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -15,22 +17,27 @@ export class ProductPreviewComponent implements OnInit {
   observedProduct:any[] = [];
   startingImg:string;
   x:number = 0;
+  prodValue: any = 1;
+  auth:boolean;
+  backup='https://www.borri.it/wp-content/uploads/2020/08/Borri_UPS_medical_equipment.jpg'
 
-  constructor(private route:ActivatedRoute, private productService:ProductsService) { }
+  constructor(private router: Router, private cartService:CartService, private authService:AuthService, private route:ActivatedRoute, private productService:ProductsService) { }
   ngDoCheck(){
-    console.log('asd')
   }
   ngOnInit(): void {
+
+    this.authService.authenticated.subscribe(auth => this.auth = auth)
     this.test = false
-    console.log('asd')
     this.route.params.subscribe((params: Params) => {
       this.id = params['id']; // same as :username in route
-      console.log(this.id)
 
-      // Napravi metodu getProductById
       this.productService.getProducts().subscribe(products=>{
         this.product = products.filter(product=>product.id==this.id)[0];
         this.startingImg = this.product.images[0]
+        this.checkImage(this.startingImg, ()=>{console.log('')}, ()=>{
+          this.startingImg = this.backup
+          this.observedProduct[0] = this.backup
+        })
         this.observedProduct = this.product.images
         setTimeout(()=>{
           this.test = true
@@ -39,12 +46,18 @@ export class ProductPreviewComponent implements OnInit {
   });
   }
 
+  checkImage(src, good, bad) {
+    var img = new Image();
+    img.onload = good
+    img.onerror = bad
+    img.src = src
+  }
+
   nextImg(){
     if(this.x >= this.observedProduct.length-1){
       this.x = -1  
     }
     this.x = this.x + 1;
-    console.log(this.x);
     this.startingImg = this.observedProduct[this.x]
     
   }
@@ -54,8 +67,22 @@ export class ProductPreviewComponent implements OnInit {
       this.x = this.observedProduct.length;
     }
     this.x = this.x - 1;
-    console.log(this.x);
     this.startingImg = this.observedProduct[this.x]
     
+  }
+
+  handleAdd(){
+    if(this.auth){
+      this.cartService.addToCart(this.product,this.prodValue)
+    }else{
+      this.router.navigate(['/login'])
+    }
+  }
+
+  checkMax(event) {
+    if (event.target.value > this.product.quantity && event.keyCode !== 46 && event.keyCode !== 8 ) {
+      event.preventDefault();
+      event.target.value = this.product.quantity
+    }
   }
 }

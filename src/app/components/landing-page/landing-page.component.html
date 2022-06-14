@@ -21,9 +21,10 @@
             <div class="text-center mb-5">
                 <h2 class="fw-bolder">Browse Top Categories</h2>
             </div>
-            <div *ngFor="let category of categories" class="col-lg-4 mb-5 mb-lg-0">
-                <div style="cursor: pointer;" class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                    <img [routerLink]="'/categories/'+category.id+'/products'" [src]="category.images" class="img-thumbnail" alt="asd">
+            
+            <div *ngFor="let category of categories"  class="col-lg-4 col-xl-4 mb-5 d-flex flex-column align-content-center">
+                <div style="cursor: pointer;" class="feature bg-gradient text-white rounded-3 mb-3 align-self-center">
+                    <img style="height: 300px; object-fit:cover;" [routerLink]="'/categories/'+category.id+'/products'" [src]="category.image" class="img-thumbnail" alt="asd">
                 </div>
                 <h3 class="h4 fw-bolder text-center">{{ category.title }}</h3>
             </div>

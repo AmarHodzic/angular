@@ -1,0 +1,5 @@
+@media (max-width:375px) {
+    .fix-input{
+        width: 100% !important;
+    }
+}

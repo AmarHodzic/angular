@@ -78,6 +78,10 @@ const routes: Routes = [
   {
     path:'',
     component:LandingPageComponent
+  },
+  {
+    path:'**',
+    redirectTo: ''
   }
 ];
 

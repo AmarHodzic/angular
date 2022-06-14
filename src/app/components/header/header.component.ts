@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Event, NavigationEnd, Router } from '@angular/router';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -20,13 +20,72 @@ export class HeaderComponent implements OnInit {
     this.authService.authenticated.subscribe(auth=>this.auth = auth)
     this.authService.userType.subscribe(userType=>this.userType = userType)
 
+    this.router.events.subscribe((event: Event) => {
+
+      if (event instanceof NavigationEnd) {
+          if(this.userType=='customer') {
+            switch(event.url) {
+              case '/admin/adminPage':
+                this.router.navigate([''])
+                break;
+              case '/admin/table':
+                this.router.navigate([''])
+                break;
+              case '/admin/categories':
+                this.router.navigate([''])
+                break;
+              case '/admin/products':
+                this.router.navigate([''])
+                break;
+              case '/admin/orders':
+                this.router.navigate([''])
+                break;
+              case '/admin/addModal':
+                this.router.navigate([''])
+                break;
+            }
+          }
+          if(this.userType==null) {
+            switch(event.url) {
+              case '/admin/adminPage':
+                this.router.navigate([''])
+                break;
+              case '/admin/table':
+                this.router.navigate([''])
+                break;
+              case '/admin/categories':
+                this.router.navigate([''])
+                break;
+              case '/admin/products':
+                this.router.navigate([''])
+                break;
+              case '/admin/orders':
+                this.router.navigate([''])
+                break;
+              case '/admin/addModal':
+                this.router.navigate([''])
+                break;
+              case '/cart':
+                this.router.navigate([''])
+                break;  
+              case '/orders':
+                this.router.navigate([''])
+                break;    
+            }
+          }
+      }
+
+
+  });
+    
     if(this.userType == 'admin'){
-      console.log('hello?')
       this.router.navigate(['/admin/adminPage'])
     }
+   
   }
 
   logout(){
+    localStorage.setItem('cartItem', '')
     this.authService.logout()
   }
 

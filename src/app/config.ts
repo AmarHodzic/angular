@@ -1,3 +1,3 @@
 export const config = {
-    url:'https://localhost:7209/api'
+    url:'http://159.65.198.180:7209/api'
 }

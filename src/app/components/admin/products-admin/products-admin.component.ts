@@ -9,15 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductsAdminComponent implements OnInit {
 
-  Headers = ['title','desc','images','price','quantity','catId','updateddate','createddate']
-  // Rows = [
-  //   {'Title':'nekititle1','Desc':'nekides1','Images':'URLNEKI','Price':350,'Quantity':5,'CatId':2,'updateddate':'dateNeki','createddate':'ALOOOOO'},   
-  //   {'Title':'nekititle2','Desc':'nekides1','Images':'URLNEKI','Price':350,'Quantity':5,'CatId':2,'updateddate':'dateNeki','createddate':'ALOOOOO'},
-  //   {'Title':'nekititle3','Desc':'nekides1','Images':'URLNEKI','Price':350,'Quantity':5,'CatId':2,'updateddate':'dateNeki','createddate':'ALOOOOO'},
-  //   {'Title':'nekititle4','Desc':'nekides1','Images':'URLNEKI','Price':350,'Quantity':5,'CatId':2,'updateddate':'dateNeki','createddate':'ALOOOOO'},
-  //   {'Title':'nekititle5','Desc':'nekides1','Images':'URLNEKI','Price':350,'Quantity':5,'CatId':2,'updateddate':'dateNeki','createddate':'ALOOOOO'},
-  // ]
-
+  Headers = ['title','desc','images','price','quantity']
   Rows: any[];
   
 
@@ -26,14 +18,13 @@ export class ProductsAdminComponent implements OnInit {
   ngOnInit(): void {
      this.productsService.getProducts().subscribe(products=>{
        this.Rows = products;
-      console.log(this.Rows);
 
      })
   }
 
   handleDeleteOfRow(event){
-    // console.log('helo?')
-    // console.log(event)
-    // this.Rows = this.Rows.filter(ourRow=>ourRow.Title!=event.Title)
+    this.productsService.deleteProductById(event).subscribe( res => {
+      this.Rows = this.Rows.filter(ourRow=>ourRow.id!=event)  
+    })
   }
 }

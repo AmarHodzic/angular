@@ -4,6 +4,7 @@ export interface User{
     password:string;
     name:string;
     type?:string;
+    orders?:any[];
     createdOn?:Date;
     updatedOn?:Date;
 }
